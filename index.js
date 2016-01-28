@@ -16,7 +16,11 @@ var commands = ['suspendAll', 'startAll'];
 
 cli.parse(options, commands);
 
-// Functions & Commands Below
+
+
+/*************************************
+ * ALL FUNCTIONS AND COMMANDS BELOW  *
+ *************************************/
 
 // Suspend All Node Boxes
 if (cli.command == 'suspendAll') {
