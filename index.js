@@ -1,11 +1,9 @@
 #!/usr/bin/env node
 
 var cli = require('cli').enable('version');
-require('shelljs/global');
+var shell = require('shelljs');
 
 cli.setApp('lc', '0.1.0');
-
-cli.info('Command Received.');
 
 var options = {
 	// options
@@ -24,14 +22,14 @@ cli.parse(options, commands);
 if (cli.command == 'suspendAll') {
 	cli.info('Suspending Node Boxes');
 	
-	cd('d:/cms30/nodeServer');
-	exec('vagrant suspend');
+	shell.cd('d:/cms30/nodeServer');
+	shell.exec('vagrant suspend');
 	
-	cd('d:/cms30/mongoServer');
-	exec('vagrant suspend');
+	shell.cd('d:/cms30/mongoServer');
+	shell.exec('vagrant suspend');
 	
-	cd('d:/cms30/solrServer');
-	exec('vagrant suspend');
+	shell.cd('d:/cms30/solrServer');
+	shell.exec('vagrant suspend');
 	
 	cli.info('All Boxes Suspended');
 }
@@ -40,14 +38,14 @@ if (cli.command == 'suspendAll') {
 if (cli.command == 'startAll') {
 	cli.info('Starting Node Boxes');
 	
-	cd('d:/cms30/nodeServer');
-	exec('vagrant up');
+	shell.cd('d:/cms30/nodeServer');
+	shell.exec('vagrant up');
 	
-	cd('d:/cms30/mongoServer');
-	exec('vagrant up');
+	shell.cd('d:/cms30/mongoServer');
+	shell.exec('vagrant up');
 	
-	cd('d:/cms30/solrServer');
-	exec('vagrant up');
+	shell.cd('d:/cms30/solrServer');
+	shell.exec('vagrant up');
 	
 	cli.info('All Boxes Running');
 }
