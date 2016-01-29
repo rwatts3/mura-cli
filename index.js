@@ -19,11 +19,12 @@ var commands = ['stopAll', 'startAll','promptTest'];
 // register options and commands.
 cli.parse(options, commands);
 
-
-prompt.get(['username', 'password'], function (err, result) {
-	console.log(result.username);
-	console.log(result.password);
-});
+if (cli.command == 'promptTest') {
+	prompt.get(['username', 'password'], function (err, result) {
+		console.log(result.username);
+		console.log(result.password);
+	});
+}
 
 
 /****************************************
