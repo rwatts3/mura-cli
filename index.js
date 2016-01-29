@@ -36,13 +36,13 @@ if (cli.command == 'stopAll' && cli.options.box == 'node') {
 	cli.info('Suspending Node Boxes');
 
 	shell.cd('d:/cms30/nodeServer');
-	shell.exec('vagrant suspend', {async:true});
+	shell.exec('vagrant suspend');
 
 	shell.cd('d:/cms30/mongoServer');
-	shell.exec('vagrant suspend', {async:true});
+	shell.exec('vagrant suspend');
 
 	shell.cd('d:/cms30/solrServer');
-	shell.exec('vagrant suspend', {async:true});
+	shell.exec('vagrant suspend');
 
 	cli.ok('All Boxes Suspended');
 }
@@ -52,13 +52,13 @@ if (cli.command == 'startAll' && cli.options.box == 'node') {
 	cli.info('Starting Node Boxes');
 
 	shell.cd('d:/cms30/nodeServer');
-	shell.exec('vagrant up', {async:true});
+	shell.exec('vagrant up');
 
 	shell.cd('d:/cms30/mongoServer');
-	shell.exec('vagrant up', {async:true});
+	shell.exec('vagrant up');
 
 	shell.cd('d:/cms30/solrServer');
-	shell.exec('vagrant up', {async:true});
+	shell.exec('vagrant up');
 
 	cli.ok('All Boxes Running');
 }
