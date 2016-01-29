@@ -2,19 +2,15 @@
   "name": "lc",
   "version": "0.1.0",
   "description": "A package to create and run cli-tests.",
-  "author": {
-	  "name" : "Ryan Watts",
-	  "email" : "ryandwatts@gmail.com",
-	  "url" : "http://ryanwatts.io/"
-  },
+  "author": "rwatts",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "rwatts",
   "license": "MIT",
   "dependencies": {
     "cli": "^0.11.1",
+    "prompt": "^0.2.14",
     "shelljs": "^0.5.3"
   },
   "bin": {
