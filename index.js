@@ -1,9 +1,12 @@
 #!/usr/bin/env node
+
 // require
 var cli = require('cli').enable('version');
 var shell = require('shelljs');
 var prompt = require('prompt');
+require('colors');
 
+// app config
 cli.setApp('lc', '0.1.0');
 
 var options = {
@@ -14,7 +17,7 @@ var options = {
     box:	['b', 'Chooses between Node or CF but defaults to Node', 'string', 'node']
 };
 
-var commands = ['stopAll', 'startAll','promptTest'];
+var commands = ['stopAll', 'startAll','promptTest','colorsTest'];
 
 // register options and commands.
 cli.parse(options, commands);
@@ -26,6 +29,9 @@ if (cli.command == 'promptTest') {
 	});
 }
 
+if (cli.command == 'colorsTest') {
+	console.log('Colors Test Success!'.blue.bold);
+}
 
 /****************************************
 * Private FUNCTIONS AND COMMANDS BELOW  *
