@@ -1,12 +1,10 @@
 #!/usr/bin/env node
-
 // require
 var cli = require('cli').enable('version');
 var shell = require('shelljs');
 var prompt = require('prompt');
-require('colors');
+var fs = require('fs');
 
-// app config
 cli.setApp('lc', '0.1.0');
 
 var options = {
@@ -14,10 +12,12 @@ var options = {
     file:	['f', 'A file to process', 'file', 'temp.log'],
     time:	['t', 'An access time', 'time', false],
     work:	[false, 'What kind of work to do', 'string', 'sleep'],
-    box:	['b', 'Chooses between Node or CF but defaults to Node', 'string', 'node']
+    box:	['b', 'Chooses between Node or CF but defaults to Node', 'string', 'node'],
+	client: ['c', 'Client to Update', 'string', false]
+	
 };
 
-var commands = ['stopAll', 'startAll','promptTest','colorsTest'];
+var commands = ['stopAll', 'startAll','promptTest', 'svnUpdate'];
 
 // register options and commands.
 cli.parse(options, commands);
@@ -29,13 +29,17 @@ if (cli.command == 'promptTest') {
 	});
 }
 
-if (cli.command == 'colorsTest') {
-	console.log('Colors Test Success!'.blue.bold);
-}
 
 /****************************************
 * Private FUNCTIONS AND COMMANDS BELOW  *
 ****************************************/
+
+// SVN Update Client
+
+if (cli.command == 'svnUpdate' && cli.options.client) {
+	shell.cd('d:/cms30/nodeServer/clients/');
+	shell.exec('svn update ' + cli.options.client);
+}
 
 // Suspend All Node Boxes
 if (cli.command == 'stopAll' && cli.options.box == 'node') {
