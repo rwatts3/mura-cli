@@ -1,8 +1,12 @@
 {
-  "name": "lc",
-  "version": "0.1.0",
-  "description": "A package to create and run cli-tests.",
-  "author": "rwatts",
+  "name": "mura",
+  "version": "0.0.1",
+  "description": "Mura CMS CLI",
+  "author": "rwatts <ryandwatts@gmail.com>",
+  "repository": {
+	"type": "git",
+	"url": "https://github.com/rwatts3/mura-cli"  
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,7 +18,10 @@
     "prompt": "^0.2.14",
     "shelljs": "^0.5.3"
   },
+  "engines": {
+    "node": "5.6.0"
+  },
   "bin": {
-    "lc": "index.js"
+    "mura": "index.js"
   }
 }
