@@ -1,38 +1,43 @@
 #!/usr/bin/env node
+'use_strict';
 
 // require
-var cli = require('cli').enable('version');
-var shell = require('shelljs');
-var prompt = require('prompt');
-var fs = require('fs');
+const cli = require('cli').enable('version');
+const shell = require('shelljs');
+const prompt = require('prompt');
+const fs = require('fs');
+const scp = require('scp');
+const configFile = process.cwd() + '/muraConfig.json';
+const config = JSON.parse(fs.readFileSync(configFile, 'utf8'));
+
 
 // app details
 cli.setApp('mura', '0.0.1');
 
 // options
-var options = {
+const options = {
     file:	['f', 'A file to process', 'file', 'temp.log'],
     time:	['t', 'An access time', 'time', false],
     work:	[false, 'What kind of work to do', 'string', 'sleep']
 };
 
 // commands
-var commands = [
-	'gitTest'
+const commands = [
+	'gitTest', 'configTest'
 ];
 
 // register options and commands.
 cli.parse(options, commands);
 
 // friendly message
-console.log('MURA CMS CLI'.bold.green + ' Unofficial'.zebra);
+console.log('MURA CMS CLI'.bold.green + ' Unofficial'.bold.yellow);
 
 
 /****************************************
 * Private FUNCTIONS AND COMMANDS BELOW  *
 ****************************************/
 
-// Start CF Boxes
+// start cf boxes
 if (cli.command == 'startAll' && cli.options.box == 'cf') {
 	cli.info('Starting CF');
 	shell.exec('net start "ColdFusion 9 Application Server"');
@@ -44,9 +49,15 @@ if (cli.command == 'startAll' && cli.options.box == 'cf') {
 	cli.ok('All CF Boxes Running');
 }
 
+// prompt test
 if (cli.command == 'promptTest') {
-	prompt.get(['username', 'password'], function (err, result) {
-		console.log(result.username);
-		console.log(result.password);
+	prompt.get(['username', 'password'], function(err, res) {
+		console.log(res.username);
+		console.log(res.password);
 	});
+}
+
+// config test
+if (cli.command == 'configTest') {
+	console.log(config);
 }
