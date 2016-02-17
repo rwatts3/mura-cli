@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-'use_strict';
+'use strict';
 
 // require
 const cli = require('cli').enable('version');
@@ -7,9 +7,10 @@ const shell = require('shelljs');
 const prompt = require('prompt');
 const fs = require('fs');
 const scp = require('scp');
-const configFile = process.cwd() + '/muraConfig.json';
-const config = JSON.parse(fs.readFileSync(configFile, 'utf8'));
 
+
+// scripts require
+const setup = require('./scripts/setup');
 
 // app details
 cli.setApp('mura', '0.0.1');
@@ -18,11 +19,13 @@ cli.setApp('mura', '0.0.1');
 const options = {
     file:	['f', 'A file to process', 'file', 'temp.log'],
     time:	['t', 'An access time', 'time', false],
-    work:	[false, 'What kind of work to do', 'string', 'sleep']
+    work:	[false, 'What kind of work to do', 'string', 'sleep'],
+	env :	['e', 'Environment, Local/Staging/Production', 'string', 'local']
 };
 
 // commands
 const commands = [
+	'init',
 	'gitTest', 'configTest'
 ];
 
@@ -59,5 +62,5 @@ if (cli.command == 'promptTest') {
 
 // config test
 if (cli.command == 'configTest') {
-	console.log(config);
+	console.log(setup.config);
 }
