@@ -62,5 +62,5 @@ if (cli.command == 'promptTest') {
 
 // config test
 if (cli.command == 'configTest') {
-	console.log(setup.config);
+	console.log(setup.createConfig());
 }

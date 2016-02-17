@@ -7,10 +7,11 @@ const cli = require('cli');
 const configFile = process.cwd() + '/muraConfig.json';
 const baseConfigFile = process.env.OLDPWD + '/lib/muraConfig.json';
 
+// creates the config file.
 const createConfig = () => {
-	cli.info('No config file found. Creating one now!'.bold.yellow);
+	cli.info('No config file found. Creating one now!'.blue);
 	shell.cp(baseConfigFile, process.cwd());
-	cli.ok('Process Complete.'.bold.green);
+	cli.ok('Process Complete.'.blue);
 };
 
 try {
@@ -19,3 +20,5 @@ try {
 } catch (err) {
 	createConfig();
 }
+
+exports.createConfig = createConfig;
