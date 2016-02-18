@@ -8,8 +8,8 @@ const configFile = process.cwd() + '/muraConfig.json';
 const baseConfigFile = process.env.OLDPWD + '/lib/muraConfig.json';
 
 /**
- * @method createConfig
- * @description 
+ * Creates the muraConfig.json file
+ * @type {Function}
  * @return {null}
  */
 const createConfig = () => {
@@ -19,9 +19,9 @@ const createConfig = () => {
 };
 
 /**
- * @method getConfig
- * @description Checks for the existence of the config file,then proceeds
- * to call {createConfig} to generate the config file if one is not found.
+ * Determines if the config file exists if not
+ * calls the createConfig() method.
+ * @type {Function}
  * @return {null}
  */
 const getConfig = () => {
